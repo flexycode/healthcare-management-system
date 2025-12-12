@@ -132,9 +132,18 @@ node seed.js
 | `IP not whitelisted` | Add your IP in Atlas → Network Access |
 | `User not found` | Run `node seed.js` to create default users |
 
-## 📄 License
-
-MIT
+## 📝 Changelog
+ 
+### v1.0.1 (2025-12-12) - UI/UX Modernization
+- **✨ Features**
+    - Implemented a **Modern Dark Sidebar Theme** (`Slate-900`) to reduce eye strain and improve visual appeal.
+    - Reference: *User Feedback - "Left side is too bright"*
+- **💄 Design**
+    - Added **Teal-400** accents for active navigation states.
+    - Updated main content background to `Slate-50` for better contrast.
+- **🔧 Fixes**
+    - Resolved UI brightness uniformity issues.
+    - Improved navigation link visibility and hover states.
 
 
 ---
@@ -166,7 +175,12 @@ Contributions are welcome!
 
 ## 📄 License
 
-This project is licensed under the **[MIT License](https://github.com/flexycode/healthcare-management-system/blob/main/LICENSE)**.
+This project is licensed under the **[MIT License](LICENSE)**.
+
+> The MIT License is a permissive license that is short and to the point. It lets people do anything they want with your code as long as they provide attribution back to you and don't hold you liable.
+
+**Permissions**: ✅ Commercial use, ✅ Modification, ✅ Distribution, ✅ Private use
+**Limitations**: ❌ Liability, ❌ Warranty
 
 #### Git Commit Message: 🏥 Healthcare Management System
 ---
