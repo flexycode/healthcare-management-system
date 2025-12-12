@@ -4,7 +4,7 @@ A comprehensive platform for managing patient records, appointments, and medical
 
 ## 🛠️ Tech Stack
 
-| Layer | Technologies |
+| Layer | Technologies |  
 |-------|-------------|
 | **Frontend** | React, Vite, TailwindCSS, Framer Motion |
 | **Backend** | Node.js, Express, MongoDB |
