@@ -166,7 +166,7 @@ Contributions are welcome!
  * ####  🕵️ [Alexander Castilo](https://github.com/xandercastillo0305-dev) - Penetration Tester | Software Engineer | Threat Researcher
  * ####  🧑‍💻 [Mark Jhoshua Taberna](https://github.com/MjTaberna) - Digital Forensics Analyst | UI Specialist | Full Stack Engineer 
  * ####  🧑‍💻 [Charles Medio](https://github.com/charles41onlyy) - Machine Learning Engineer | Software Engineer
- * ####  🕵️ [Tristan Jhay Salamat](https://github.com/xandercastillo0305-dev) - Full Stack Engineer | Forensics Analyst | QA Engineer
+ * ####  🕵️ [Tristan Jhay Salamat](https://github.com/tristanjhay) - Full Stack Engineer | Forensics Analyst | QA Engineer
 
 
  * ####  🕵️‍♀️ [Rinoah Venedict Dela Rama](https://github.com/Noah-dev2217) - Forensic Analyst | QA Engineer | Data Engineer 
