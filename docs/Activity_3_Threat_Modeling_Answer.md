@@ -1,9 +1,5 @@
 # Self-Paced Activity 3: Threat Modeling
 
-**Student Name:** _______________  
-**Section:** _______________  
-**Date:** _______________
-
 ---
 
 ## IDENTIFYING SECURITY OBJECTIVES
