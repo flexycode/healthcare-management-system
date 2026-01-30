@@ -1,9 +1,5 @@
 # Self-Paced Activity 5: Server Hardening Technique
 
-**Student Name:** _______________  
-**Section:** _______________  
-**Date:** _______________
-
 ---
 
 ## SYSTEM VULNERABILITY CHECKLIST
