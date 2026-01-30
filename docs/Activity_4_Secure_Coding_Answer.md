@@ -1,9 +1,5 @@
 # Self-Paced Activity 4: Secure Coding Practices
 
-**Student Name:** _______________  
-**Section:** _______________  
-**Date:** _______________
-
 ---
 
 ## INPUT VALIDATION & DATA SANITIZATION
