@@ -66,41 +66,41 @@ A Healthcare Management System (HMS) designed to manage patient records, appoint
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                           INTERNET ZONE (Untrusted)                      │
-│   ┌─────────────┐                                                        │
+│                           INTERNET ZONE (Untrusted)                     │
+│   ┌─────────────┐                                                       │
 │   │   Browser   │ ◄──── External Users (Admin / Doctor / Staff)         │
-│   └──────┬──────┘                                                        │
+│   └──────┬──────┘                                                       │
 └──────────┼──────────────────────────────────────────────────────────────┘
            │ HTTPS Request (Port 5173)
            │
 ┌──────────┼──────────────────────────────────────────────────────────────┐
-│          ▼                    DMZ ZONE                                   │
+│          ▼                    DMZ ZONE                                  │
 │   ┌─────────────────┐         ┌─────────────────┐                       │
 │   │   React.js      │  REST   │   Express.js    │                       │
 │   │   Frontend      │◄───────►│   Backend API   │                       │
 │   │   (Vite)        │  :5000  │   (Node.js)     │                       │
 │   │   Port: 5173    │         │   Port: 5000    │                       │
 │   └─────────────────┘         └────────┬────────┘                       │
-│                                        │                                 │
+│                                        │                                │
 │                              ┌─────────┴─────────┐                      │
-│                              │  Auth Middleware   │                      │
-│                              │  - verifyToken()   │                      │
-│                              │  - authorizeRoles()│                      │
+│                              │  Auth Middleware  │                      │
+│                              │ -verifyToken()    │                      │
+│                              │ -authorizeRoles() │                      │
 │                              └─────────┬─────────┘                      │
 └────────────────────────────────────────┼────────────────────────────────┘
                                          │ MongoDB Driver (Encrypted)
 ┌────────────────────────────────────────┼────────────────────────────────┐
-│                                        ▼    DATABASE ZONE (Trusted)      │
-│                              ┌─────────────────┐                         │
-│                              │   MongoDB Atlas  │                        │
-│                              │   (Cloud DB)     │                        │
-│                              │                  │                        │
-│                              │  Collections:    │                        │
-│                              │  - users         │                        │
-│                              │  - patients      │                        │
-│                              │  - appointments  │                        │
-│                              │  - invoices      │                        │
-│                              └─────────────────┘                         │
+│                                        ▼    DATABASE ZONE (Trusted)     │
+│                              ┌─────────────────┐                        │
+│                              │   MongoDB Atla  │                        │
+│                              │   (Cloud DB)    │                        │
+│                              │                 │                        │
+│                              │  Collections:   │                        │
+│                              │  - users        │                        │
+│                              │  - patients     │                        │
+│                              │  - appointments │                        │
+│                              │  - invoices     │                        │
+│                              └─────────────────┘                        │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -163,10 +163,10 @@ A Healthcare Management System (HMS) designed to manage patient records, appoint
 ### Data Flow Diagram (DFD)
 
 ```
-                                   ┌────────────────────┐
+                                   ┌─────────────────────┐
                                    │    External User    │
                                    │ (Admin/Doctor/Staff)│
-                                   └─────────┬──────────┘
+                                   └─────────┬───────────┘
                                              │
                     ┌────────────────────────┼────────────────────────┐
                     │                        │                        │
@@ -182,27 +182,27 @@ A Healthcare Management System (HMS) designed to manage patient records, appoint
                    │                        │                        │
                    ▼                        ▼                        ▼
           ┌───────────────────────────────────────────────────────────────────┐
-          │                       EXPRESS API LAYER                            │
-          │                                                                    │
+          │                       EXPRESS API LAYER                           │
+          │                                                                   │
           │   /api/auth/login    /api/patients    /api/billing                │
           │   /api/auth/register /api/appointments                            │
           └───────────────────────────────┬───────────────────────────────────┘
                                           │
                                ┌──────────┴──────────┐
-                               │   AUTH MIDDLEWARE    │
-                               │                      │
-                               │   verifyToken()      │
-                               │   authorizeRoles()   │
+                               │   AUTH MIDDLEWARE   │
+                               │                     │
+                               │   verifyToken()     │
+                               │   authorizeRoles()  │
                                └──────────┬──────────┘
                                           │
                                           ▼
           ┌───────────────────────────────────────────────────────────────────┐
-          │                         DATA STORE                                 │
-          │                       MongoDB Atlas                                │
-          │                                                                    │
-          │   ┌─────────┐  ┌──────────┐  ┌──────────────┐  ┌─────────┐       │
-          │   │  Users  │  │ Patients │  │ Appointments │  │ Invoices│       │
-          │   └─────────┘  └──────────┘  └──────────────┘  └─────────┘       │
+          │                         DATA STORE                                │
+          │                       MongoDB Atlas                               │
+          │                                                                   │
+          │   ┌─────────┐  ┌──────────┐  ┌──────────────┐  ┌─────────┐        │
+          │   │  Users  │  │ Patients │  │ Appointments │  │ Invoices│        │
+          │   └─────────┘  └──────────┘  └──────────────┘  └─────────┘        │
           └───────────────────────────────────────────────────────────────────┘
 ```
 
