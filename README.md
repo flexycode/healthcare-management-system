@@ -148,6 +148,10 @@ node seed.js
 
 ---
 
+## ✨ Screenshots
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! 
