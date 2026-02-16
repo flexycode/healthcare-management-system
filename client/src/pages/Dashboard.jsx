@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
+import { API_URL } from '../config/api';
 import {
     Users, Calendar, Receipt, Activity,
     UserPlus, CalendarPlus, FileText,
     TrendingUp, Clock, CheckCircle,
     ArrowRight
 } from 'lucide-react';
-
-const API_URL = 'http://localhost:5000/api';
 
 const Dashboard = () => {
     const { user } = useAuth();

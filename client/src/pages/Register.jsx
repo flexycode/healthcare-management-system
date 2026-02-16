@@ -7,7 +7,8 @@ const Register = () => {
         username: '',
         password: '',
         name: '',
-        role: 'staff'
+        role: 'staff',
+        adminToken: ''
     });
     const [error, setError] = useState('');
     const { register } = useAuth();
@@ -19,7 +20,7 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await register(formData.username, formData.password, formData.name, formData.role);
+        const res = await register(formData.username, formData.password, formData.name, formData.role, formData.adminToken);
         if (res.success) {
             navigate('/login');
         } else {
@@ -78,6 +79,18 @@ const Register = () => {
                             <option value="doctor">Doctor</option>
                             <option value="admin">Admin</option>
                         </select>
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Admin Token</label>
+                        <input
+                            type="password"
+                            name="adminToken"
+                            value={formData.adminToken}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Required — contact your administrator"
+                            required
+                        />
                     </div>
                     <button
                         type="submit"

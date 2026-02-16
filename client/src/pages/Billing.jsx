@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Receipt, X, Edit2, Trash2, DollarSign, Plus, CheckCircle, Clock, XCircle } from 'lucide-react';
-
-const API_URL = 'http://localhost:5000/api';
+import { API_URL } from '../config/api';
 
 const Billing = () => {
     const [invoices, setInvoices] = useState([]);

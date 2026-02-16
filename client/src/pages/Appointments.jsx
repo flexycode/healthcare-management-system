@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, X, Edit2, Trash2, Clock, User, Plus } from 'lucide-react';
-
-const API_URL = 'http://localhost:5000/api';
+import { API_URL } from '../config/api';
 
 const Appointments = () => {
     const [appointments, setAppointments] = useState([]);
