@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTINASSL AY 2025-2026 - Course Project Documentation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.6;
+      color: #1a1a2e;
+    }
+
+    @page {
+      size: A4;
+      margin: 2cm 2.5cm;
+    }
+
+    @media print {
+      body {
+        font-size: 10pt;
+      }
+
+      .page-break {
+        page-break-before: always;
+      }
+
+      .no-break {
+        page-break-inside: avoid;
+      }
+
+      .cover-page {
+        page-break-after: always;
+      }
+
+      h2,
+      h3 {
+        page-break-after: avoid;
+      }
+
+      table {
+        page-break-inside: avoid;
+      }
+
+      img {
+        page-break-inside: avoid;
+      }
+    }
+
+    /* Cover Page */
+    .cover-page {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 1.5cm 2cm;
+      background: linear-gradient(135deg, #f8f9ff 0%, #eef0ff 100%);
+    }
+
+    .cover-page .institution {
+      font-size: 13pt;
+      font-weight: 500;
+      color: #555;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .cover-page .course-title {
+      font-size: 13pt;
+      font-weight: 400;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .cover-page .doc-title {
+      font-size: 24pt;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .cover-page .doc-subtitle {
+      font-size: 14pt;
+      font-weight: 500;
+      color: #4a4a6a;
+      margin-bottom: 25px;
+    }
+
+    .cover-page .group-name {
+      font-size: 16pt;
+      font-weight: 600;
+      color: #2d2d5e;
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+    }
+
+    .cover-page .members {
+      font-size: 11pt;
+      color: #333;
+      line-height: 2;
+    }
+
+    .cover-page .members strong {
+      font-weight: 600;
+    }
+
+    .cover-page .date-info {
+      margin-top: 25px;
+      font-size: 11pt;
+      color: #666;
+    }
+
+    /* General */
+    h1 {
+      font-size: 20pt;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin: 30px 0 15px;
+      border-bottom: 3px solid #4a4aff;
+      padding-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 16pt;
+      font-weight: 600;
+      color: #2d2d5e;
+      margin: 25px 0 12px;
+    }
+
+    h3 {
+      font-size: 13pt;
+      font-weight: 600;
+      color: #3d3d7e;
+      margin: 18px 0 10px;
+    }
+
+    h4 {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #4a4a6a;
+      margin: 12px 0 8px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    /* TOC */
+    .toc {
+      padding: 20px 0;
+    }
+
+    .toc h1 {
+      font-size: 22pt;
+      text-align: center;
+      border-bottom: none;
+    }
+
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px dotted #ccc;
+      font-size: 11pt;
+    }
+
+    .toc li a {
+      text-decoration: none;
+      color: #2d2d5e;
+    }
+
+    .toc li.section-item {
+      font-weight: 600;
+      font-size: 12pt;
+      padding-top: 14px;
+    }
+
+    .toc li.sub-item {
+      padding-left: 25px;
+      font-weight: 400;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 20px;
+      font-size: 9.5pt;
+    }
+
+    th {
+      background: #2d2d5e;
+      color: white;
+      padding: 8px 10px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 6px 10px;
+      border-bottom: 1px solid #e0e0e0;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) {
+      background: #f8f8ff;
+    }
+
+    /* Images */
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin: 15px 0;
+    }
+
+    .screenshot-item {
+      text-align: center;
+    }
+
+    .screenshot-item img {
+      max-width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .screenshot-item .caption {
+      font-size: 9.5pt;
+      color: #555;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    .screenshot-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    /* Architecture diagram */
+    .arch-diagram {
+      margin: 15px 0;
+    }
+
+    .arch-zone {
+      border: 2px solid #2d2d5e;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .arch-zone-label {
+      position: absolute;
+      top: -10px;
+      left: 15px;
+      background: white;
+      padding: 0 8px;
+      font-size: 9pt;
+      font-weight: 700;
+      color: #2d2d5e;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .arch-zone.internet {
+      border-color: #dc3545;
+    }
+
+    .arch-zone.internet .arch-zone-label {
+      color: #dc3545;
+    }
+
+    .arch-zone.dmz {
+      border-color: #fd7e14;
+    }
+
+    .arch-zone.dmz .arch-zone-label {
+      color: #fd7e14;
+    }
+
+    .arch-zone.database {
+      border-color: #22863a;
+    }
+
+    .arch-zone.database .arch-zone-label {
+      color: #22863a;
+    }
+
+    .arch-component {
+      display: inline-block;
+      border: 1.5px solid #4a4a6a;
+      border-radius: 6px;
+      padding: 8px 14px;
+      text-align: center;
+      font-size: 9pt;
+      background: white;
+      min-width: 130px;
+      vertical-align: top;
+    }
+
+    .arch-component strong {
+      display: block;
+      font-size: 9.5pt;
+      color: #1a1a2e;
+      margin-bottom: 2px;
+    }
+
+    .arch-component small {
+      color: #666;
+      font-size: 8pt;
+    }
+
+    .arch-arrow {
+      display: inline-block;
+      padding: 0 10px;
+      color: #4a4aff;
+      font-size: 10pt;
+      font-weight: 700;
+      vertical-align: middle;
+      line-height: 60px;
+    }
+
+    .arch-flow-down {
+      text-align: center;
+      color: #4a4aff;
+      font-size: 10pt;
+      font-weight: 600;
+      padding: 4px 0;
+    }
+
+    /* Blockquote */
+    blockquote {
+      border-left: 4px solid #4a4aff;
+      padding: 10px 15px;
+      margin: 12px 0;
+      background: #f8f8ff;
+      font-size: 10pt;
+    }
+
+    /* Status badges */
+    .resolved {
+      color: #22863a;
+      font-weight: 600;
+    }
+
+    .remaining {
+      color: #cb7e00;
+      font-weight: 600;
+    }
+
+    .info-badge {
+      color: #0366d6;
+    }
+
+    /* Section divider */
+    hr {
+      border: none;
+      border-top: 2px solid #e0e0e0;
+      margin: 30px 0;
+    }
+
+    /* Footer */
+    .doc-footer {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 9.5pt;
+      color: #666;
+      border-top: 2px solid #2d2d5e;
+      margin-top: 30px;
+    }
+
+    /* Code */
+    code {
+      background: #f0f0f5;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 9pt;
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==================== COVER PAGE ==================== -->
+  <div class="cover-page">
+    <div class="institution">National University of the Philippines</div>
+    <div class="course-title">CTINASSL - Information Assurance and Security<br>AY 2025-2026</div>
+    <div style="width:80px;height:3px;background:#4a4aff;margin:20px auto;"></div>
+    <div class="doc-title">Course Project Documentation</div>
+    <div class="doc-subtitle">Healthcare Management System (HMS)</div>
+    <div style="width:120px;height:2px;background:#ccc;margin:20px auto;"></div>
+    <div class="group-name">ALTAEGIS INFINITE</div>
+    <div class="members">
+      <strong>CASTILLO, ALEXANDER</strong><br>
+      <strong>MEDIO, CHARLES</strong><br>
+      <strong>SALAMAT, TRISTAN JHAY</strong><br>
+      <strong>TABERNA, MARK JHOSHUA</strong><br>
+      <strong>TALOSIG, JAY ARRE</strong>
+    </div>
+    <div class="date-info">February 13, 2026</div>
+  </div>
+
+  <!-- ==================== TABLE OF CONTENTS ==================== -->
+  <div class="toc page-break">
+    <h1>Table of Contents</h1>
+    <ul>
+      <li class="section-item">Section 1: Introduction</li>
+      <li class="section-item">Section 2: Web Application Screen Designs</li>
+      <li class="sub-item">2.1 Web Application UI</li>
+      <li class="sub-item">2.2 Database Development</li>
+      <li class="section-item">Section 3: Threat Model</li>
+      <li class="sub-item">3.1 System Architecture</li>
+      <li class="sub-item">3.2 Data Flow Diagram</li>
+      <li class="sub-item">3.3 Trust Boundaries</li>
+      <li class="section-item">Section 4: Application Overview</li>
+      <li class="sub-item">4.1 Technology Stack</li>
+      <li class="sub-item">4.2 Security Mechanisms</li>
+      <li class="sub-item">4.3 Roles and Permissions</li>
+      <li class="section-item">Section 5: Server Hardening Techniques Checklist Summary</li>
+      <li class="sub-item">5.1 Service Management</li>
+      <li class="sub-item">5.2 Express/Node.js Configuration Hardening</li>
+      <li class="sub-item">5.3 Authentication Endpoint Hardening</li>
+      <li class="sub-item">5.4 Error Handling &amp; Information Disclosure Prevention</li>
+      <li class="sub-item">5.5 Database Security (MongoDB Atlas)</li>
+      <li class="sub-item">5.6 File &amp; Directory Permissions</li>
+      <li class="sub-item">5.7 Environment Configuration Hardening</li>
+      <li class="sub-item">5.8 Required Security Package Installations</li>
+      <li class="section-item">Section 6: Web Vulnerability Assessment Report (OWASP ZAP)</li>
+      <li class="sub-item">6.1 Initial Vulnerability Assessment (Pre-Hardening)</li>
+      <li class="sub-item">6.2 Post-Hardening Vulnerability Assessment</li>
+      <li class="sub-item">6.3 Vulnerability Resolution Comparison Matrix</li>
+      <li class="sub-item">6.4 Resolution Summary</li>
+      <li class="section-item">Section 7: Reflection (Individual)</li>
+      <li class="sub-item">7.1 Castillo, Alexander</li>
+      <li class="sub-item">7.2 Medio, Charles</li>
+      <li class="sub-item">7.3 Salamat, Tristan Jhay</li>
+      <li class="sub-item">7.4 Taberna, Mark Jhoshua</li>
+      <li class="sub-item">7.5 Talosig, Jay Arre</li>
+      <li class="section-item">References</li>
+    </ul>
+  </div>
+
+  <!-- ==================== SECTION 1: INTRODUCTION ==================== -->
+  <div class="page-break">
+    <h1>Section 1: Introduction</h1>
+    <h2>Project Overview</h2>
+    <p>The Healthcare Management System (HMS) is a full-stack web application developed as a course project for CTINASSL
+      (Information Assurance and Security) during AY 2025-2026. The system is designed to manage patient records,
+      appointments, and medical billing operations within a healthcare facility, while prioritizing data security and
+      regulatory compliance.</p>
+    <p>The application was built using modern web technologies: a <strong>React.js</strong> frontend powered by
+      <strong>Vite</strong> for the user interface, an <strong>Express.js/Node.js</strong> backend serving as the REST
+      API layer, and <strong>MongoDB Atlas</strong> as the cloud-hosted NoSQL database. This architecture demonstrates a
+      real-world client-server pattern commonly used in enterprise healthcare applications.
+    </p>
+
+    <h2>Project Objectives</h2>
+    <p>The primary objectives of this project are:</p>
+    <ol style="margin-left:20px; margin-bottom:15px;">
+      <li><strong>Develop a functional Healthcare Management System</strong> that supports patient management,
+        appointment scheduling, billing, and role-based access control.</li>
+      <li><strong>Apply secure coding practices</strong> aligned with the OWASP Top 10:2021 security framework to
+        address common web application vulnerabilities.</li>
+      <li><strong>Implement server hardening techniques</strong> to protect the application against network-level and
+        application-level attacks.</li>
+      <li><strong>Conduct vulnerability assessments</strong> using OWASP ZAP to identify security weaknesses before and
+        after hardening.</li>
+      <li><strong>Demonstrate compliance awareness</strong> with relevant regulations including HIPAA and the Philippine
+        Data Privacy Act of 2012 (RA 10173).</li>
+    </ol>
+
+    <h2>Scope and Limitations</h2>
+    <p>The HMS covers four core modules: <strong>Dashboard</strong> (analytics overview), <strong>Patient
+        Management</strong> (CRUD operations for patient records), <strong>Appointment Scheduling</strong> (booking and
+      management), and <strong>Billing &amp; Invoicing</strong> (financial tracking). The system implements role-based
+      access control with three user roles: Admin, Doctor, and Staff.</p>
+    <p>This documentation consolidates the team's work across three key deliverables: the Server Hardening Techniques
+      Checklist Summary (Section 5), the OWASP ZAP Web Vulnerability Assessment Report (Section 6), and Individual
+      Reflections (Section 7). Additional sections for Web Application Screen Designs, Threat Model, and Application
+      Overview provide supporting context.</p>
+
+    <h2>Project Repository</h2>
+    <p>The complete source code and documentation are available at: <a
+        href="https://github.com/flexycode/healthcare-management-system">https://github.com/flexycode/healthcare-management-system</a>
+    </p>
+  </div>
+
+  <!-- ==================== SECTION 2: WEB APPLICATION SCREEN DESIGNS ==================== -->
+  <div class="page-break">
+    <h1>Section 2: Web Application Screen Designs</h1>
+
+    <h2>2.1 Web Application UI</h2>
+    <p>The following screenshots demonstrate the Healthcare Management System's user interface, showcasing the main
+      modules accessible through the HMS Portal.</p>
+
+    <div class="screenshot-grid no-break">
+      <div class="screenshot-item">
+        <img src="../assets/Web Application Screen Designs/Web Application UI/Screenshot 2026-01-30 054346.png"
+          alt="Login Page">
+        <div class="caption">Figure 2.1.1 - HMS Login Page with Username/Password Authentication</div>
+      </div>
+    </div>
+
+    <div class="screenshot-grid no-break">
+      <div class="screenshot-item">
+        <img src="../assets/Web Application Screen Designs/Web Application UI/Screenshot 2026-01-30 054404.png"
+          alt="Dashboard - Initial">
+        <div class="caption">Figure 2.1.2 - Admin Dashboard Overview with Summary Cards, Quick Actions, and Recent
+          Activity</div>
+      </div>
+    </div>
+
+    <div class="screenshot-grid no-break">
+      <div class="screenshot-item">
+        <img src="../assets/Web Application Screen Designs/Web Application UI/Screenshot 2026-01-30 061438.png"
+          alt="Appointments List">
+        <div class="caption">Figure 2.1.3 - Appointments Management Module with Scheduled Patient Appointments</div>
+      </div>
+    </div>
+
+    <div class="screenshot-grid no-break">
+      <div class="screenshot-item">
+        <img src="../assets/Web Application Screen Designs/Web Application UI/Screenshot 2026-01-30 061507.png"
+          alt="Dashboard Populated">
+        <div class="caption">Figure 2.1.4 - Dashboard with Populated Data (5 Patients, 2 Appointments, 2 Pending
+          Invoices)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DB Development Screenshots -->
+  <div class="page-break">
+    <h2>2.2 Database Development</h2>
+    <p>The following screenshots document the CRUD operations and data management workflows implemented in the
+      Healthcare Management System.</p>
+
+    <div class="screenshot-grid no-break">
+      <div class="screenshot-item">
+        <img src="../assets/Web Application Screen Designs/Database Development/Screenshot 2026-01-30 054513.png"
+          alt="Schedule Appointment">
+        <div class="caption">Figure 2.2.1 - Schedule Appointment Modal (Patient, Doctor, Date/Time, Reason)</div>
+      </div>
+    </div>
+
+    <div class="screenshot-grid no-break">
+      <div class="screenshot-item">
+        <img src="../assets/Web Application Screen Designs/Database Development/Screenshot 2026-01-30 055826.png"
+          alt="Add Patient">
+        <div class="caption">Figure 2.2.2 - Add New Patient Form (Full Name, Age, Gender, Contact, Address, Medical
+          History)</div>
+      </div>
+    </div>
+
+    <div class="screenshot-grid no-break">
+      <div class="screenshot-item">
+        <img src="../assets/Web Application Screen Designs/Database Development/Screenshot 2026-01-30 060620.png"
+          alt="Patient List">
+        <div class="caption">Figure 2.2.3 - Patient Management Table with Edit/Delete Actions</div>
+      </div>
+    </div>
+
+    <div class="screenshot-grid no-break">
+      <div class="screenshot-item">
+        <img src="../assets/Web Application Screen Designs/Database Development/Screenshot 2026-01-30 061002.png"
+          alt="Full Patient List">
+        <div class="caption">Figure 2.2.4 - Patient Management with 5 Registered Patients</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break">
+    <div class="screenshot-grid no-break">
+      <div class="screenshot-item">
+        <img src="../assets/Web Application Screen Designs/Database Development/Screenshot 2026-01-30 055450.png"
+          alt="Create Invoice">
+        <div class="caption">Figure 2.2.5 - Create Invoice Modal with Multiple Line Items and Auto-Calculated Total
+        </div>
+      </div>
+    </div>
+
+    <div class="screenshot-grid no-break">
+      <div class="screenshot-item">
+        <img src="../assets/Web Application Screen Designs/Database Development/Screenshot 2026-01-30 055503.png"
+          alt="Billing Single">
+        <div class="caption">Figure 2.2.6 - Billing &amp; Invoices Table (Single Pending Invoice - $8.02)</div>
+      </div>
+    </div>
+
+    <div class="screenshot-grid no-break">
+      <div class="screenshot-item">
+        <img src="../assets/Web Application Screen Designs/Database Development/Screenshot 2026-01-30 061202.png"
+          alt="Billing Full">
+        <div class="caption">Figure 2.2.7 - Billing &amp; Invoices with Multiple Records (Pending and Paid Status)</div>
+      </div>
+    </div>
+
+    <div class="screenshot-grid no-break">
+      <div class="screenshot-item">
+        <img src="../assets/Web Application Screen Designs/Database Development/Screenshot 2026-01-30 055800.png"
+          alt="Appointments Full">
+        <div class="caption">Figure 2.2.8 - Appointments List with 5 Scheduled Appointments</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 3: THREAT MODEL ==================== -->
+  <div class="page-break">
+    <h1>Section 3: Threat Model</h1>
+    <p>The threat model was developed using the STRIDE methodology to systematically identify and categorize potential
+      security threats to the Healthcare Management System. The full threat modeling analysis is available at: <a
+        href="https://github.com/flexycode/healthcare-management-system/blob/main/docs/Activity_3_Threat_Modeling_Answer.md">Activity
+        3 - Threat Modeling</a></p>
+
+    <h2>3.1 System Architecture</h2>
+    <p>The HMS follows a three-tier architecture with clearly defined trust zones:</p>
+
+    <div class="arch-diagram">
+      <!-- Internet Zone -->
+      <div class="arch-zone internet">
+        <span class="arch-zone-label">Internet Zone (Untrusted)</span>
+        <div style="text-align:center;padding:10px 0;">
+          <div class="arch-component">
+            <strong>Browser</strong>
+            <small>Web Client</small>
+          </div>
+          <span class="arch-arrow" style="line-height:normal;padding:0 15px;">&#9668;</span>
+          <span style="font-size:9pt;color:#555;">External Users (Admin / Doctor / Staff)</span>
+        </div>
+      </div>
+
+      <div class="arch-flow-down">&#9660; HTTPS Request (Port 5173)</div>
+
+      <!-- DMZ Zone -->
+      <div class="arch-zone dmz">
+        <span class="arch-zone-label">DMZ Zone (Semi-Trusted)</span>
+        <div style="text-align:center;padding:10px 0;">
+          <div class="arch-component">
+            <strong>React.js Frontend</strong>
+            <small>(Vite) Port: 5173</small>
+          </div>
+          <span class="arch-arrow">&#9668; REST &#9654;</span>
+          <div class="arch-component">
+            <strong>Express.js API</strong>
+            <small>(Node.js) Port: 5000</small>
+          </div>
+        </div>
+        <div style="text-align:center;padding:8px 0 4px;">
+          <div class="arch-component" style="border-color:#4a4aff;">
+            <strong>Auth Middleware</strong>
+            <small>verifyToken() &middot; authorizeRoles()</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="arch-flow-down">&#9660; MongoDB Driver (TLS Encrypted)</div>
+
+      <!-- Database Zone -->
+      <div class="arch-zone database">
+        <span class="arch-zone-label">Database Zone (Trusted)</span>
+        <div style="text-align:center;padding:10px 0;">
+          <div class="arch-component">
+            <strong>MongoDB Atlas</strong>
+            <small>Cloud Database</small>
+            <small style="display:block;margin-top:4px;font-size:7.5pt;color:#888;">Collections: users, patients, appointments, invoices</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>3.2 Trust Boundaries</h2>
+    <table>
+      <tr>
+        <th>Zone</th>
+        <th>Components</th>
+        <th>Trust Level</th>
+      </tr>
+      <tr>
+        <td>Internet Zone</td>
+        <td>Browser, External Users</td>
+        <td>Untrusted</td>
+      </tr>
+      <tr>
+        <td>DMZ Zone</td>
+        <td>React.js Frontend, Express.js API, Auth Middleware</td>
+        <td>Semi-Trusted</td>
+      </tr>
+      <tr>
+        <td>Database Zone</td>
+        <td>MongoDB Atlas (Cloud DB)</td>
+        <td>Trusted</td>
+      </tr>
+    </table>
+
+    <h2>3.3 Security Objectives</h2>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Objective</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Confidentiality</td>
+        <td>Protect patient data from unauthorized access (HIPAA compliance)</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Integrity</td>
+        <td>Ensure medical records cannot be tampered with</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Availability</td>
+        <td>Maintain 99.9% uptime for healthcare operations</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Authentication</td>
+        <td>Verify user identity before granting access</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Authorization</td>
+        <td>Enforce role-based access control</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Auditability</td>
+        <td>Log all access to sensitive data for compliance</td>
+      </tr>
+    </table>
+
+    <h2>3.4 Assets</h2>
+    <table>
+      <tr>
+        <th>Asset</th>
+        <th>Description</th>
+        <th>Value</th>
+        <th>Owner</th>
+      </tr>
+      <tr>
+        <td>Patient Records</td>
+        <td>Personal health information, medical history</td>
+        <td>Critical</td>
+        <td>Healthcare Provider</td>
+      </tr>
+      <tr>
+        <td>User Credentials</td>
+        <td>Usernames, hashed passwords</td>
+        <td>High</td>
+        <td>IT Security</td>
+      </tr>
+      <tr>
+        <td>JWT Tokens</td>
+        <td>Authentication tokens for API access</td>
+        <td>High</td>
+        <td>Backend System</td>
+      </tr>
+      <tr>
+        <td>MongoDB Database</td>
+        <td>All persistent system data</td>
+        <td>Critical</td>
+        <td>Database Admin</td>
+      </tr>
+      <tr>
+        <td>Billing Information</td>
+        <td>Financial data, invoices</td>
+        <td>High</td>
+        <td>Billing Dept</td>
+      </tr>
+      <tr>
+        <td>Appointment Data</td>
+        <td>Scheduling records</td>
+        <td>Medium</td>
+        <td>Operations</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ==================== SECTION 4: APPLICATION OVERVIEW ==================== -->
+  <div class="page-break">
+    <h1>Section 4: Application Overview</h1>
+
+    <h2>4.1 Technology Stack</h2>
+    <table>
+      <tr>
+        <th>Layer</th>
+        <th>Technology</th>
+        <th>Version</th>
+      </tr>
+      <tr>
+        <td>Frontend Framework</td>
+        <td>React.js</td>
+        <td>18.2.0</td>
+      </tr>
+      <tr>
+        <td>Build Tool</td>
+        <td>Vite</td>
+        <td>5.1.6</td>
+      </tr>
+      <tr>
+        <td>Styling</td>
+        <td>TailwindCSS</td>
+        <td>3.4.1</td>
+      </tr>
+      <tr>
+        <td>Animations</td>
+        <td>Framer Motion</td>
+        <td>11.0.8</td>
+      </tr>
+      <tr>
+        <td>HTTP Client</td>
+        <td>Axios</td>
+        <td>1.6.7</td>
+      </tr>
+      <tr>
+        <td>Backend Framework</td>
+        <td>Express.js</td>
+        <td>5.1.0</td>
+      </tr>
+      <tr>
+        <td>Database ODM</td>
+        <td>Mongoose</td>
+        <td>9.0.0</td>
+      </tr>
+      <tr>
+        <td>Authentication</td>
+        <td>JWT (jsonwebtoken)</td>
+        <td>9.0.2</td>
+      </tr>
+      <tr>
+        <td>Password Hashing</td>
+        <td>bcryptjs</td>
+        <td>3.0.3</td>
+      </tr>
+      <tr>
+        <td>Security Headers</td>
+        <td>Helmet</td>
+        <td>8.1.0</td>
+      </tr>
+    </table>
+
+    <h2>4.2 Security Mechanisms</h2>
+    <table>
+      <tr>
+        <th>Mechanism</th>
+        <th>Description</th>
+        <th>Implementation</th>
+      </tr>
+      <tr>
+        <td>JWT Authentication</td>
+        <td>Token-based auth with 1-hour expiry</td>
+        <td><code>jsonwebtoken</code> library</td>
+      </tr>
+      <tr>
+        <td>Password Hashing</td>
+        <td>bcrypt with 10 salt rounds</td>
+        <td><code>bcryptjs</code> library</td>
+      </tr>
+      <tr>
+        <td>RBAC</td>
+        <td>Role-based access control</td>
+        <td>Custom <code>authorizeRoles()</code> middleware</td>
+      </tr>
+      <tr>
+        <td>HTTP Security Headers</td>
+        <td>XSS, clickjacking protection</td>
+        <td><code>helmet</code> middleware</td>
+      </tr>
+      <tr>
+        <td>CORS</td>
+        <td>Cross-origin resource sharing</td>
+        <td><code>cors</code> middleware</td>
+      </tr>
+    </table>
+
+    <h2>4.3 Roles and Permissions</h2>
+    <table>
+      <tr>
+        <th>Role</th>
+        <th>Description</th>
+        <th>Permissions</th>
+      </tr>
+      <tr>
+        <td>Admin</td>
+        <td>System administrator</td>
+        <td>Full CRUD on all resources, user management, system configuration</td>
+      </tr>
+      <tr>
+        <td>Doctor</td>
+        <td>Medical practitioner</td>
+        <td>Read/Update patients, full appointment management</td>
+      </tr>
+      <tr>
+        <td>Staff</td>
+        <td>Administrative staff</td>
+        <td>Read patients, create appointments, billing operations</td>
+      </tr>
+    </table>
+
+    <h2>4.4 Key Modules</h2>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Module</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Patient Management</td>
+        <td>Register, view, update, and delete patient records</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Appointment Scheduling</td>
+        <td>Schedule, modify, and cancel doctor appointments</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Billing &amp; Invoicing</td>
+        <td>Generate and manage patient invoices</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>User Authentication</td>
+        <td>Secure login/logout with role-based access</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Dashboard Analytics</td>
+        <td>View statistics, recent patients, and upcoming appointments</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ==================== SECTION 5: SERVER HARDENING ==================== -->
+  <div class="page-break">
+    <h1>Section 5: Server Hardening Techniques Checklist Summary</h1>
+    <h2>Overview</h2>
+    <p>The following checklist summarizes all server hardening techniques implemented on the Healthcare Management
+      System web server configurations. The HMS runs on a <strong>Node.js/Express.js</strong> backend (Port 5000) with
+      <strong>MongoDB Atlas</strong> as the database and a <strong>React.js/Vite</strong> frontend (Port 5173).
+    </p>
+
+    <h3>5.1 Service Management</h3>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Technique</th>
+        <th>Before (Vulnerable)</th>
+        <th>After (Hardened)</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Unnecessary services disabled</td>
+        <td>Default setup, all services running</td>
+        <td>Only Express API (Port 5000) and MongoDB connection active; Vite dev server isolated</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Service enumeration review</td>
+        <td>No review performed</td>
+        <td>Confirmed only required services (Express, MongoDB driver) loaded in <code>server/index.js</code></td>
+        <td class="resolved">Implemented</td>
+      </tr>
+    </table>
+
+    <h3>5.2 Express/Node.js Configuration Hardening</h3>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Technique</th>
+        <th>Before (Vulnerable)</th>
+        <th>After (Hardened)</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Rate Limiting</td>
+        <td>No rate limiting, brute force possible</td>
+        <td><code>express-rate-limit</code>: 100 req/15min (general), 5 req/15min (auth)</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>CORS Restriction</td>
+        <td><code>cors()</code> allows ANY origin</td>
+        <td>CORS restricted to <code>CLIENT_URL</code> (localhost:5173) with specific methods</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Request Body Size Limit</td>
+        <td>No payload size limit, DoS risk</td>
+        <td><code>express.json({ limit: '10kb' })</code></td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Helmet Security Headers (CSP)</td>
+        <td>Default <code>helmet()</code> config only</td>
+        <td>Full CSP directives configured</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>X-Powered-By Header Hidden</td>
+        <td>Helmet default may expose this</td>
+        <td><code>hidePoweredBy: true</code> explicitly configured</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>HSTS Enabled</td>
+        <td>Not configured</td>
+        <td><code>hsts: { maxAge: 31536000, includeSubDomains: true, preload: true }</code></td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Clickjacking Protection</td>
+        <td>Default only</td>
+        <td><code>frameguard: { action: "deny" }</code></td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>XSS Filter</td>
+        <td>Default only</td>
+        <td><code>xssFilter: true</code> explicitly enabled</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>MIME Sniffing Prevention</td>
+        <td>Default only</td>
+        <td><code>noSniff: true</code></td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Referrer Policy</td>
+        <td>Not configured</td>
+        <td><code>referrerPolicy: { policy: "strict-origin-when-cross-origin" }</code></td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>Cross-Origin Policies</td>
+        <td>Not configured</td>
+        <td>crossOriginEmbedderPolicy, crossOriginOpenerPolicy, crossOriginResourcePolicy configured</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>DNS Prefetch Control</td>
+        <td>Not configured</td>
+        <td><code>dnsPrefetchControl: { allow: false }</code></td>
+        <td class="resolved">Implemented</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="page-break">
+    <h3>5.3 Authentication Endpoint Hardening</h3>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Technique</th>
+        <th>Before (Vulnerable)</th>
+        <th>After (Hardened)</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>Registration Endpoint Protection</td>
+        <td><code>/api/auth/register</code> publicly accessible</td>
+        <td>Protected with <code>verifyToken</code> + <code>authorizeRoles('admin')</code> middleware</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>Auth Route Rate Limiting</td>
+        <td>No rate limit on login attempts</td>
+        <td>Auth-specific limiter: 5 attempts/15 minutes</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td>Password Strength Enforcement</td>
+        <td>No password requirements, "123" accepted</td>
+        <td>Regex: 8+ chars, uppercase, lowercase, number, special character</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+    </table>
+
+    <h3>5.4 Error Handling &amp; Information Disclosure Prevention</h3>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Technique</th>
+        <th>Before (Vulnerable)</th>
+        <th>After (Hardened)</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td>Error Message Sanitization</td>
+        <td><code>res.status(500).json({ error: err.message })</code></td>
+        <td>Generic messages in production: <code>'Internal server error'</code></td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>Centralized Error Handler</td>
+        <td>Per-controller try/catch with no centralized handler</td>
+        <td>Global error handler with 404 catch-all</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td>Structured Error Logging</td>
+        <td>No logging system</td>
+        <td>Structured <code>console.error</code> with timestamp, path, method, userId</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+    </table>
+
+    <h3>5.5 Database Security (MongoDB Atlas)</h3>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Technique</th>
+        <th>Before (Vulnerable)</th>
+        <th>After (Hardened)</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td>IP Whitelisting</td>
+        <td>Default Atlas setting</td>
+        <td>Only allowed IPs can connect</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>22</td>
+        <td>Database Authentication</td>
+        <td>Already in place</td>
+        <td>Username/password via connection string</td>
+        <td class="resolved">Verified</td>
+      </tr>
+      <tr>
+        <td>23</td>
+        <td>TLS/SSL Encryption (in transit)</td>
+        <td>Enabled by default on Atlas</td>
+        <td>MongoDB Atlas enforces TLS for all connections</td>
+        <td class="resolved">Verified</td>
+      </tr>
+      <tr>
+        <td>24</td>
+        <td>Role-Based Database Access</td>
+        <td>Single DB user</td>
+        <td>Limited permissions for application user</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>25</td>
+        <td>Automated Backups</td>
+        <td>Not verified</td>
+        <td>Configured in MongoDB Atlas dashboard</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>26</td>
+        <td>Connection Error Handling</td>
+        <td>No graceful failure</td>
+        <td><code>process.exit(1)</code> on DB connection failure</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+    </table>
+
+    <h3>5.6 File &amp; Directory Permissions</h3>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Technique</th>
+        <th>Before (Vulnerable)</th>
+        <th>After (Hardened)</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>27</td>
+        <td><code>.env</code> Excluded from Git</td>
+        <td>Not verified</td>
+        <td><code>.gitignore</code> includes <code>.env</code>, <code>.env.local</code>, etc.</td>
+        <td class="resolved">Verified</td>
+      </tr>
+      <tr>
+        <td>28</td>
+        <td>Sensitive File Permissions</td>
+        <td>Default permissions</td>
+        <td><code>server/.env</code> set to Mode 600 (owner read/write only)</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>29</td>
+        <td>Node Modules Excluded</td>
+        <td>Already in .gitignore</td>
+        <td><code>node_modules/</code> excluded from version control</td>
+        <td class="resolved">Verified</td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td>Log Files Secured</td>
+        <td>Logs not managed</td>
+        <td><code>logs/</code>, <code>*.log</code>, <code>npm-debug.log*</code> added to <code>.gitignore</code></td>
+        <td class="resolved">Implemented</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="page-break">
+    <h3>5.7 Environment Configuration Hardening</h3>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Technique</th>
+        <th>Before (Vulnerable)</th>
+        <th>After (Hardened)</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>31</td>
+        <td>Environment-Based API URL</td>
+        <td>Hardcoded <code>http://localhost:5000</code></td>
+        <td>Uses <code>process.env.CLIENT_URL</code> with fallback</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>32</td>
+        <td>JWT Secret Management</td>
+        <td>Stored in <code>.env</code> only</td>
+        <td>JWT_SECRET in <code>.env</code>; different secrets for production</td>
+        <td class="resolved">Implemented</td>
+      </tr>
+      <tr>
+        <td>33</td>
+        <td>JWT Expiration Configuration</td>
+        <td>1-hour expiry set</td>
+        <td><code>JWT_EXPIRES_IN=1h</code> configurable via environment</td>
+        <td class="resolved">Verified</td>
+      </tr>
+      <tr>
+        <td>34</td>
+        <td>Rate Limit Configuration</td>
+        <td>Not configurable</td>
+        <td><code>RATE_LIMIT_WINDOW_MS</code>, <code>RATE_LIMIT_MAX_REQUESTS</code>, <code>AUTH_RATE_LIMIT_MAX</code> in
+          <code>.env</code>
+        </td>
+        <td class="resolved">Implemented</td>
+      </tr>
+    </table>
+
+    <h3>5.8 Required Security Package Installations</h3>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Package</th>
+        <th>Purpose</th>
+        <th>Command</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>35</td>
+        <td><code>express-rate-limit</code></td>
+        <td>Rate limiting middleware</td>
+        <td><code>npm install express-rate-limit --save</code></td>
+        <td class="resolved">Installed</td>
+      </tr>
+      <tr>
+        <td>36</td>
+        <td><code>winston</code></td>
+        <td>Structured logging</td>
+        <td><code>npm install winston --save</code></td>
+        <td class="remaining">Optional</td>
+      </tr>
+      <tr>
+        <td>37</td>
+        <td><code>express-mongo-sanitize</code></td>
+        <td>NoSQL injection protection</td>
+        <td><code>npm install express-mongo-sanitize --save</code></td>
+        <td class="resolved">Installed</td>
+      </tr>
+      <tr>
+        <td>38</td>
+        <td><code>hpp</code></td>
+        <td>HTTP Parameter Pollution protection</td>
+        <td><code>npm install hpp --save</code></td>
+        <td class="resolved">Installed</td>
+      </tr>
+    </table>
+
+    <h2>Hardening Summary Statistics</h2>
+    <table>
+      <tr>
+        <th>Metric</th>
+        <th>Count</th>
+      </tr>
+      <tr>
+        <td><strong>Total Hardening Techniques Applied</strong></td>
+        <td><strong>38</strong></td>
+      </tr>
+      <tr>
+        <td>Fully Implemented</td>
+        <td>32</td>
+      </tr>
+      <tr>
+        <td>Verified / Optional</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>Remaining Gaps</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td><strong>Categories Covered</strong></td>
+        <td><strong>8</strong></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ==================== SECTION 6: OWASP ZAP ==================== -->
+  <div class="page-break">
+    <h1>Section 6: Web Vulnerability Assessment Report (OWASP ZAP)</h1>
+    <h2>Overview</h2>
+    <p>This section provides a checklist summary of the OWASP ZAP web vulnerability assessment conducted on the
+      Healthcare Management System. The assessment was performed in two phases:</p>
+    <ol style="margin-left:20px;margin-bottom:15px;">
+      <li><strong>Initial Scan</strong> - Baseline vulnerability assessment before applying security hardening measures
+      </li>
+      <li><strong>Post-Hardening Scan</strong> - Follow-up assessment after implementing server hardening and secure
+        coding practices</li>
+    </ol>
+    <p><strong>Tool Used</strong>: OWASP ZAP (Zed Attack Proxy) | <strong>Target URL</strong>:
+      <code>http://localhost:5000</code> | <strong>Scan Type</strong>: Active Scan + Spider Crawl
+    </p>
+
+    <h2>6.1 Initial Vulnerability Assessment (Pre-Hardening)</h2>
+    <h3>Scan Configuration</h3>
+    <table>
+      <tr>
+        <th>Parameter</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>Target</td>
+        <td><code>http://localhost:5000/api</code></td>
+      </tr>
+      <tr>
+        <td>Scan Mode</td>
+        <td>Standard Active Scan</td>
+      </tr>
+      <tr>
+        <td>Authentication</td>
+        <td>None (testing unauthenticated access)</td>
+      </tr>
+      <tr>
+        <td>Spider Depth</td>
+        <td>Default</td>
+      </tr>
+      <tr>
+        <td>Date Performed</td>
+        <td><em>2-13-2026</em></td>
+      </tr>
+    </table>
+
+    <h3>Initial Scan - Alert Summary</h3>
+    <table>
+      <tr>
+        <th>Risk Level</th>
+        <th>Alert Count</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td style="color:#dc3545;font-weight:600;">High</td>
+        <td>3</td>
+        <td>Critical vulnerabilities requiring immediate action</td>
+      </tr>
+      <tr>
+        <td style="color:#fd7e14;font-weight:600;">Medium</td>
+        <td>5</td>
+        <td>Significant security concerns</td>
+      </tr>
+      <tr>
+        <td style="color:#ffc107;font-weight:600;">Low</td>
+        <td>4</td>
+        <td>Minor issues and best practice recommendations</td>
+      </tr>
+      <tr>
+        <td style="color:#0d6efd;font-weight:600;">Informational</td>
+        <td>3</td>
+        <td>Non-critical observations</td>
+      </tr>
+      <tr>
+        <td><strong>Total Alerts</strong></td>
+        <td><strong>15</strong></td>
+        <td></td>
+      </tr>
+    </table>
+
+    <h3>Initial Scan - Detailed Findings</h3>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Alert Name</th>
+        <th>Risk</th>
+        <th>CWE ID</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Missing Anti-CSRF Tokens</td>
+        <td style="color:#fd7e14;">Medium</td>
+        <td>CWE-352</td>
+        <td>No CSRF protection on POST endpoints</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>X-Frame-Options Header Not Set</td>
+        <td style="color:#fd7e14;">Medium</td>
+        <td>CWE-1021</td>
+        <td>Application can be embedded in iframes</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Content Security Policy Not Set</td>
+        <td style="color:#fd7e14;">Medium</td>
+        <td>CWE-693</td>
+        <td>No CSP header to prevent XSS</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Server Leaks Info via X-Powered-By</td>
+        <td style="color:#ffc107;">Low</td>
+        <td>CWE-200</td>
+        <td>Express server identity exposed</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>X-Content-Type-Options Missing</td>
+        <td style="color:#ffc107;">Low</td>
+        <td>CWE-693</td>
+        <td>MIME sniffing not prevented</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Anti-Clickjacking Header Missing</td>
+        <td style="color:#fd7e14;">Medium</td>
+        <td>CWE-1021</td>
+        <td>Duplicate of X-Frame-Options finding</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Cross-Domain Misconfiguration</td>
+        <td style="color:#fd7e14;">Medium</td>
+        <td>CWE-264</td>
+        <td>CORS allows any origin (*)</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Application Error Disclosure</td>
+        <td style="color:#dc3545;font-weight:600;">High</td>
+        <td>CWE-200</td>
+        <td>Internal error messages exposed</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>No Rate Limiting</td>
+        <td style="color:#dc3545;font-weight:600;">High</td>
+        <td>CWE-307</td>
+        <td>Auth endpoints vulnerable to brute force</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Unprotected API Endpoint</td>
+        <td style="color:#dc3545;font-weight:600;">High</td>
+        <td>CWE-284</td>
+        <td><code>/api/auth/register</code> accessible without auth</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Cookie No HttpOnly Flag</td>
+        <td style="color:#ffc107;">Low</td>
+        <td>CWE-1004</td>
+        <td>Session tokens accessible via JavaScript</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>HSTS Header Not Set</td>
+        <td style="color:#ffc107;">Low</td>
+        <td>CWE-319</td>
+        <td>HSTS not enforced</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>Modern Web Application</td>
+        <td style="color:#0d6efd;">Info</td>
+        <td>-</td>
+        <td>Application identified as React SPA</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>Timestamp Disclosure</td>
+        <td style="color:#0d6efd;">Info</td>
+        <td>CWE-200</td>
+        <td>Timestamps exposed in responses</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>User Agent Fuzzer</td>
+        <td style="color:#0d6efd;">Info</td>
+        <td>-</td>
+        <td>Various user agents accepted</td>
+      </tr>
+    </table>
+    <blockquote><strong>Attachment:</strong> See OWASP ZAP Initial HTML Report - <a
+        href="https://github.com/flexycode/healthcare-management-system/tree/main/docs">healthcare-management-system/docs</a>
+    </blockquote>
+  </div>
+
+  <div class="page-break">
+    <h2>6.2 Post-Hardening Vulnerability Assessment</h2>
+    <h3>Scan Configuration</h3>
+    <table>
+      <tr>
+        <th>Parameter</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>Target</td>
+        <td><code>http://localhost:5000/api</code></td>
+      </tr>
+      <tr>
+        <td>Scan Mode</td>
+        <td>Standard Active Scan</td>
+      </tr>
+      <tr>
+        <td>Authentication</td>
+        <td>JWT Bearer Token (authenticated scan)</td>
+      </tr>
+      <tr>
+        <td>Spider Depth</td>
+        <td>Default</td>
+      </tr>
+      <tr>
+        <td>Date Performed</td>
+        <td><em>2-13-2026</em></td>
+      </tr>
+    </table>
+
+    <h3>Post-Hardening Scan - Alert Summary</h3>
+    <table>
+      <tr>
+        <th>Risk Level</th>
+        <th>Before</th>
+        <th>After</th>
+        <th>Change</th>
+      </tr>
+      <tr>
+        <td style="color:#dc3545;font-weight:600;">High</td>
+        <td>3</td>
+        <td>0</td>
+        <td class="resolved">-3 (All resolved)</td>
+      </tr>
+      <tr>
+        <td style="color:#fd7e14;font-weight:600;">Medium</td>
+        <td>5</td>
+        <td>1</td>
+        <td class="resolved">-4</td>
+      </tr>
+      <tr>
+        <td style="color:#ffc107;font-weight:600;">Low</td>
+        <td>4</td>
+        <td>1</td>
+        <td class="resolved">-3</td>
+      </tr>
+      <tr>
+        <td style="color:#0d6efd;font-weight:600;">Informational</td>
+        <td>3</td>
+        <td>2</td>
+        <td class="resolved">-1</td>
+      </tr>
+      <tr>
+        <td><strong>Total Alerts</strong></td>
+        <td><strong>15</strong></td>
+        <td><strong>4</strong></td>
+        <td><strong class="resolved">-11 (73% reduction)</strong></td>
+      </tr>
+    </table>
+
+    <h3>Post-Hardening - Remaining Findings</h3>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Alert Name</th>
+        <th>Risk</th>
+        <th>Status</th>
+        <th>Remarks</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Missing Anti-CSRF Tokens</td>
+        <td style="color:#fd7e14;">Medium</td>
+        <td class="remaining">Remaining</td>
+        <td>JWT-based API uses token auth; mitigated by same-origin policy and CORS restrictions</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Strict-Transport-Security (Production)</td>
+        <td style="color:#ffc107;">Low</td>
+        <td class="remaining">Remaining</td>
+        <td>HSTS configured but not enforceable in localhost; active in production with HTTPS</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Modern Web Application</td>
+        <td style="color:#0d6efd;">Info</td>
+        <td class="info-badge">Informational</td>
+        <td>Non-actionable</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Timestamp Disclosure</td>
+        <td style="color:#0d6efd;">Info</td>
+        <td class="info-badge">Informational</td>
+        <td>MongoDB timestamps, acceptable for application functionality</td>
+      </tr>
+    </table>
+    <blockquote><strong>Attachment:</strong> See OWASP ZAP Post-Hardening HTML Report - <a
+        href="https://github.com/flexycode/healthcare-management-system/tree/main/docs">healthcare-management-system/docs</a>
+    </blockquote>
+
+    <h2>6.3 Vulnerability Resolution Comparison Matrix</h2>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Vulnerability</th>
+        <th>CWE</th>
+        <th>Initial Risk</th>
+        <th>Post Status</th>
+        <th>Hardening Technique Applied</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Missing Anti-CSRF Tokens</td>
+        <td>CWE-352</td>
+        <td style="color:#fd7e14;">Medium</td>
+        <td class="remaining">Mitigated</td>
+        <td>JWT auth + CORS restriction</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>X-Frame-Options Not Set</td>
+        <td>CWE-1021</td>
+        <td style="color:#fd7e14;">Medium</td>
+        <td class="resolved">Resolved</td>
+        <td><code>helmet({ frameguard: { action: "deny" } })</code></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>CSP Not Set</td>
+        <td>CWE-693</td>
+        <td style="color:#fd7e14;">Medium</td>
+        <td class="resolved">Resolved</td>
+        <td>Full CSP directives in Helmet</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>X-Powered-By Exposed</td>
+        <td>CWE-200</td>
+        <td style="color:#ffc107;">Low</td>
+        <td class="resolved">Resolved</td>
+        <td><code>helmet({ hidePoweredBy: true })</code></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>X-Content-Type-Options Missing</td>
+        <td>CWE-693</td>
+        <td style="color:#ffc107;">Low</td>
+        <td class="resolved">Resolved</td>
+        <td><code>helmet({ noSniff: true })</code></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Anti-Clickjacking Header Missing</td>
+        <td>CWE-1021</td>
+        <td style="color:#fd7e14;">Medium</td>
+        <td class="resolved">Resolved</td>
+        <td>Frameguard + CSP frame-ancestors</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Cross-Domain Misconfiguration</td>
+        <td>CWE-264</td>
+        <td style="color:#fd7e14;">Medium</td>
+        <td class="resolved">Resolved</td>
+        <td>CORS restricted to CLIENT_URL</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Application Error Disclosure</td>
+        <td>CWE-200</td>
+        <td style="color:#dc3545;font-weight:600;">High</td>
+        <td class="resolved">Resolved</td>
+        <td>Centralized error handler; generic messages</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>No Rate Limiting</td>
+        <td>CWE-307</td>
+        <td style="color:#dc3545;font-weight:600;">High</td>
+        <td class="resolved">Resolved</td>
+        <td><code>express-rate-limit</code>: 100/15min, 5/15min auth</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Unprotected API Endpoint</td>
+        <td>CWE-284</td>
+        <td style="color:#dc3545;font-weight:600;">High</td>
+        <td class="resolved">Resolved</td>
+        <td>Admin-only auth on registration</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Cookie No HttpOnly Flag</td>
+        <td>CWE-1004</td>
+        <td style="color:#ffc107;">Low</td>
+        <td class="resolved">Resolved</td>
+        <td>HTTP-only cookie for JWT tokens</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>HSTS Not Set</td>
+        <td>CWE-319</td>
+        <td style="color:#ffc107;">Low</td>
+        <td class="remaining">Configured</td>
+        <td>HSTS header set (active in production)</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>Modern Web Application</td>
+        <td>-</td>
+        <td style="color:#0d6efd;">Info</td>
+        <td class="info-badge">N/A</td>
+        <td>Informational only</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>Timestamp Disclosure</td>
+        <td>CWE-200</td>
+        <td style="color:#0d6efd;">Info</td>
+        <td class="info-badge">Accepted</td>
+        <td>Required for application functionality</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>User Agent Fuzzer</td>
+        <td>-</td>
+        <td style="color:#0d6efd;">Info</td>
+        <td class="resolved">Resolved</td>
+        <td>Helmet security headers applied</td>
+      </tr>
+    </table>
+
+    <h2>6.4 Resolution Summary</h2>
+    <table>
+      <tr>
+        <th>Metric</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td><strong>Total Initial Vulnerabilities</strong></td>
+        <td><strong>15</strong></td>
+      </tr>
+      <tr>
+        <td>Resolved</td>
+        <td>11</td>
+      </tr>
+      <tr>
+        <td>Mitigated / Configured</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Informational (No Action)</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td><strong>Overall Improvement</strong></td>
+        <td><strong>73% vulnerability reduction</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Critical/High Remaining</strong></td>
+        <td><strong>0</strong></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ==================== SECTION 7: REFLECTIONS ==================== -->
+  <div class="page-break">
+    <h1>Section 7: Reflection (Individual)</h1>
+    <blockquote>Each team member reflects on their learnings about performing secure coding practices and the
+      implications on business applications.</blockquote>
+
+    <h2>7.1 CASTILLO, ALEXANDER - Individual Reflection</h2>
+    <h3>Key Learnings</h3>
+    <p>Working on the Healthcare Management System opened my eyes to the critical importance of security in web
+      application development. Before this project, I viewed security as an afterthought, something you add at the end.
+      Through implementing secure coding practices, I learned that security must be baked into the development lifecycle
+      from day one. The concept of "defense in depth" became real to me when I saw how multiple layers (input
+      validation, authentication, authorization, and error handling) each serve as a safety net for the others.</p>
+    <p>One of the most impactful lessons was understanding OWASP Top 10 vulnerabilities in a hands-on context. Seeing
+      our Healthcare Management System vulnerable to broken access control (A01:2021) because the registration endpoint
+      was unprotected was alarming. Anyone could have created an admin account and accessed all patient records. This is
+      not a hypothetical scenario. It is exactly the kind of vulnerability that leads to real-world data breaches.</p>
+    <p>The threat modeling exercise using STRIDE was equally transformative. By systematically analyzing each component
+      for Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, and Elevation of Privilege, I
+      developed a security-first mindset that I will carry into all future projects.</p>
+    <h3>Implications on Business Applications</h3>
+    <p>In the healthcare industry, a single data breach can cost millions of dollars in regulatory fines, lawsuits, and
+      reputational damage. HIPAA regulations mandate that Protected Health Information (PHI) must be encrypted at rest
+      and in transit, with audit trails for every access event. Our initial implementation lacked these controls, which
+      would have made any healthcare organization using this software liable for non-compliance.</p>
+    <p>Beyond compliance, secure coding practices directly impact patient trust. If patients learn that their medical
+      history, contact information, or billing data was exposed due to poor security practices, the institutional
+      credibility of the healthcare provider is permanently damaged. By implementing server hardening, rate limiting,
+      and proper error handling, we demonstrated that a well-secured application protects not only data but also the
+      trust relationship between patients and their healthcare providers.</p>
+    <h3>Personal Takeaways</h3>
+    <p>I now understand that every line of code I write has security implications. I commit to always considering the
+      OWASP Top 10 when building any web application and to performing threat modeling before writing the first line of
+      implementation code.</p>
+
+    <h2>7.2 MEDIO, CHARLES - Individual Reflection</h2>
+    <h3>Key Learnings</h3>
+    <p>This project was my first real experience with implementing server-side security measures on a production-grade
+      web application. The server hardening activity (Activity 5) was particularly enlightening because it showed me how
+      many "invisible" attack surfaces exist in a default Express.js configuration. Before hardening, our application
+      accepted unlimited-size request bodies, allowed CORS from any origin, and returned full internal error stack
+      traces to the client. Each of these default behaviors is a potential entry point for attackers.</p>
+    <p>I gained deep practical knowledge of HTTP security headers through configuring Helmet.js. Understanding what
+      Content-Security-Policy, X-Frame-Options, Strict-Transport-Security, and Referrer-Policy do individually, and how
+      they work together to create a defense-in-depth strategy, has fundamentally changed how I approach backend
+      development. Previously, I would just use <code>app.use(helmet())</code> with defaults and move on. Now I
+      understand why each directive matters and how to configure them for the specific needs of a healthcare
+      application.</p>
+    <p>The vulnerability assessment using OWASP ZAP was another critical learning experience. Seeing the scan results
+      visualize vulnerabilities I had not even considered, like timestamp disclosure and user agent fingerprinting,
+      taught me that security assessment requires automated tools that think differently from developers.</p>
+    <h3>Implications on Business Applications</h3>
+    <p>For any business application, especially in regulated industries like healthcare, finance, or government, server
+      configuration is the foundation of security. A misconfigured server renders all application-level security
+      controls useless. If CORS allows any origin, an attacker can make authenticated requests from a malicious site. If
+      error messages expose internal details, attackers gain reconnaissance information for free.</p>
+    <p>In a business context, the cost of implementing server hardening is negligible compared to the cost of a data
+      breach. According to IBM's 2024 Cost of a Data Breach Report, the average healthcare data breach costs $10.93
+      million. The hardening techniques we implemented (rate limiting, CORS restriction, security headers, error
+      sanitization) require only a few hours of development time but protect against the most common attack vectors.
+      This is an ROI that every business should prioritize.</p>
+    <h3>Personal Takeaways</h3>
+    <p>I now treat server configuration as a first-class citizen in my development workflow. Before deploying any
+      application, I will run OWASP ZAP scans and verify that all security headers are correctly configured. Security is
+      not optional; it is a professional responsibility.</p>
+
+    <h2>7.3 SALAMAT, TRISTAN JHAY - Individual Reflection</h2>
+    <h3>Key Learnings</h3>
+    <p>The secure coding practices activity (Activity 4) was the most technically challenging part of this project for
+      me, and also the most rewarding. I learned that secure coding is not about adding a security library and hoping
+      for the best. It requires a disciplined, methodical approach to how data flows through every layer of the
+      application.</p>
+    <p>Input validation was the area where I saw the biggest gap between our initial implementation and best practices.
+      Our controllers directly used <code>req.body</code> to create database documents:
+      <code>new Patient(req.body)</code>. This is a textbook mass assignment vulnerability. An attacker could inject
+      unexpected fields, including MongoDB operators like <code>$gt</code> or <code>$where</code>, leading to NoSQL
+      injection attacks. Learning to use <code>express-validator</code> to validate and sanitize every input field, and
+      to only destructure expected fields, was a fundamental shift in how I write controller logic.
+    </p>
+    <p>Authentication and session management also presented important lessons. We were storing JWT tokens in
+      <code>localStorage</code>, which is vulnerable to Cross-Site Scripting (XSS) attacks. If any part of our frontend
+      has an XSS vulnerability, all user tokens are compromised. Migrating to HTTP-only cookies ensures that tokens are
+      inaccessible to JavaScript, adding a critical layer of protection.
+    </p>
+    <h3>Implications on Business Applications</h3>
+    <p>In business applications that handle sensitive data such as patient records, financial information, and personal
+      identifiers, the consequences of insecure coding practices extend beyond technical incidents. They create legal
+      liability. Under HIPAA, healthcare organizations face fines of up to $1.5 million per violation category per year.
+      Under the Philippine Data Privacy Act of 2012 (RA 10173), organizations processing personal data must implement
+      reasonable and appropriate measures to protect it.</p>
+    <p>The secure coding practices we implemented (input validation, access control enforcement, secure token storage,
+      and comprehensive error handling) are not just technical best practices. They are legal requirements. Business
+      applications that fail to implement these practices expose their organizations to regulatory penalties, civil
+      lawsuits, and criminal liability.</p>
+    <h3>Personal Takeaways</h3>
+    <p>I have learned that every <code>req.body</code> is untrusted. Every response should be sanitized. Every route
+      should be protected. These are not optional enhancements; they are the minimum standard for professional software
+      development. Going forward, I will use security checklists (like OWASP's Secure Coding Practices Guide) as a
+      mandatory part of my development workflow.</p>
+
+    <h2>7.4 TABERNA, MARK JHOSHUA - Individual Reflection</h2>
+    <h3>Key Learnings</h3>
+    <p>This project gave me hands-on experience with the full spectrum of application security, from threat modeling to
+      secure coding to server hardening to vulnerability assessment. The most valuable lesson I learned is that security
+      is a continuous process, not a one-time activity. Our initial application passed all functional tests but failed
+      spectacularly on security. This taught me that functional correctness and security are two completely different
+      domains that must both be addressed.</p>
+    <p>The DREAD risk assessment methodology was particularly impactful for me. By scoring each threat on Damage,
+      Reproducibility, Exploitability, Affected Users, and Discoverability, I learned to prioritize security fixes based
+      on quantitative risk analysis rather than gut feeling. For example, the unprotected registration endpoint scored a
+      perfect 10.0 DREAD score because it was trivially exploitable, affected all users, and caused maximum damage. This
+      systematic approach to risk prioritization is something I will apply in every future project.</p>
+    <p>Working with error handling and logging taught me about the tension between developer convenience and security.
+      During development, we want detailed error messages for debugging. In production, those same messages become an
+      information goldmine for attackers. Implementing environment-aware error handling (verbose in development, generic
+      in production) solved this tension elegantly.</p>
+    <h3>Implications on Business Applications</h3>
+    <p>For business applications in the healthcare sector, the implications are life-or-death. If a healthcare
+      management system is compromised, attackers gain access to Protected Health Information (PHI) that includes
+      medical histories, diagnoses, medications, and personal identifiers. This data can be used for identity theft,
+      insurance fraud, or even blackmail.</p>
+    <p>Beyond the direct harm to patients, a data breach destroys the business itself. Healthcare organizations that
+      suffer breaches face mandatory public disclosure, regulatory investigations, class-action lawsuits, and loss of
+      patient trust. The average time to identify and contain a healthcare data breach is 329 days (IBM, 2024). During
+      that time, attackers have unrestricted access to the most sensitive data imaginable.</p>
+    <p>The security practices we implemented, including threat modeling, access control, encrypted data storage, error
+      sanitization, and vulnerability assessment, are the industry-standard defenses against these threats. They are not
+      academic exercises; they are the practices that separate secure applications from breached ones.</p>
+    <h3>Personal Takeaways</h3>
+    <p>I now approach every application I build with the mindset: "How would an attacker exploit this?" This adversarial
+      thinking, combined with systematic methodologies like STRIDE and DREAD, gives me a framework for building secure
+      software. Security is not a feature; it is a quality attribute that must be present in every layer of the
+      application.</p>
+
+    <h2>7.5 TALOSIG, JAY ARRE - Individual Reflection</h2>
+    <h3>Key Learnings</h3>
+    <p>Leading the development of the Healthcare Management System taught me that security is fundamentally a design
+      problem, not an implementation problem. When we designed our initial architecture (React frontend, Express API,
+      MongoDB database), we made security decisions, or failed to make them, that propagated through every layer of the
+      application. The unprotected registration endpoint was a design flaw, not a coding bug. The use of
+      <code>localStorage</code> for JWT tokens was an architectural decision, not a simple oversight.
+    </p>
+    <p>The comprehensive threat modeling exercise using STRIDE methodology across all 10 identified threats gave me a
+      structured way to think about security at the architectural level. By mapping threats to specific components
+      (<code>authRoutes.js</code> for spoofing, <code>AuthContext.jsx</code> for information disclosure,
+      <code>patientController.js</code> for tampering), I learned to trace security vulnerabilities to their root causes
+      rather than treating symptoms.
+    </p>
+    <p>The OWASP ZAP vulnerability assessment was the most eye-opening activity. Running an automated scanner against
+      our own application and seeing 15 alerts across High, Medium, and Low severity levels was humbling. It confirmed
+      that even experienced developers cannot manually identify all vulnerabilities. Automated security testing tools
+      must be part of every development pipeline. After implementing our hardening measures and re-scanning, seeing the
+      alert count drop from 15 to 4 (73% reduction) with zero High-severity alerts remaining was deeply satisfying.</p>
+    <p>The secure coding practices I am most proud of implementing include the comprehensive Helmet.js configuration
+      with 12+ security directives, the dual-layer rate limiting system (general + auth-specific), and the
+      environment-aware centralized error handler. Each of these demonstrates that enterprise-grade security is
+      achievable even in academic projects.</p>
+    <h3>Implications on Business Applications</h3>
+    <p>The implications of secure coding practices on business applications cannot be overstated, particularly in
+      healthcare. The Healthcare Management System we built handles patient names, contact information, medical
+      histories, appointment records, and billing data. All of these are classified as Protected Health Information
+      (PHI) under HIPAA and sensitive personal information under the Philippine Data Privacy Act.</p>
+    <p>In a real business deployment, the vulnerabilities we identified in our initial scan would have constituted a
+      compliance violation before a single patient record was entered. An unprotected registration endpoint means
+      unauthorized access. Missing security headers mean vulnerability to XSS and clickjacking. Exposed error messages
+      mean free reconnaissance for attackers. Each of these is not just a technical issue. It is a regulatory, legal,
+      and ethical failure.</p>
+    <p>The business case for secure coding practices is clear: prevention is orders of magnitude cheaper than
+      remediation. The hours we spent implementing server hardening, input validation, and access control cost nothing
+      compared to the millions of pesos in regulatory fines, legal fees, and reputational damage that a data breach
+      would cause. For any business building applications that process personal or sensitive data, secure coding
+      practices are not a cost center. They are an insurance policy and a competitive advantage.</p>
+    <h3>Personal Takeaways</h3>
+    <p>This project transformed my understanding of secure software development. I no longer view security as a separate
+      phase or an additional feature. It is an integral quality attribute that must be present in every design decision,
+      every line of code, and every deployment configuration. I commit to advocating for security-first development in
+      every team I work with and to continuously updating my knowledge of evolving threats and countermeasures. The
+      OWASP Top 10, STRIDE, and DREAD are now permanent tools in my development toolkit.</p>
+  </div>
+
+  <!-- ==================== REFERENCES ==================== -->
+  <div class="page-break">
+    <h1>References</h1>
+    <ul style="list-style:none;padding:0;line-height:2.2;">
+      <li>OWASP Foundation. (2021). <em>OWASP Top 10:2021</em>. <a
+          href="https://owasp.org/www-project-top-ten/">https://owasp.org/www-project-top-ten/</a></li>
+      <li>OWASP Foundation. (n.d.). <em>OWASP Secure Coding Practices Quick Reference Guide</em>. <a
+          href="https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/">https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/</a>
+      </li>
+      <li>OWASP Foundation. (n.d.). <em>OWASP ZAP - Zed Attack Proxy</em>. <a
+          href="https://www.zaproxy.org/">https://www.zaproxy.org/</a></li>
+      <li>IBM Security. (2024). <em>Cost of a Data Breach Report 2024</em>. <a
+          href="https://www.ibm.com/reports/data-breach">https://www.ibm.com/reports/data-breach</a></li>
+      <li>Microsoft. (n.d.). <em>The STRIDE Threat Model</em>. <a
+          href="https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats">https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats</a>
+      </li>
+      <li>U.S. Department of Health and Human Services. (n.d.). <em>HIPAA Security Rule</em>. <a
+          href="https://www.hhs.gov/hipaa/for-professionals/security/">https://www.hhs.gov/hipaa/for-professionals/security/</a>
+      </li>
+      <li>Republic Act No. 10173. (2012). <em>Data Privacy Act of 2012</em>. <a
+          href="https://www.privacy.gov.ph/data-privacy-act/">https://www.privacy.gov.ph/data-privacy-act/</a></li>
+      <li>Express.js. (n.d.). <em>Production Best Practices: Security</em>. <a
+          href="https://expressjs.com/en/advanced/best-practice-security.html">https://expressjs.com/en/advanced/best-practice-security.html</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <div class="doc-footer">
+    <p><strong>Document prepared by</strong>: ALTAEGIS INFINITE</p>
+    <p><strong>Healthcare Management System</strong> - CTINASSL AY 2025-2026</p>
+    <p><strong>Date</strong>: February 13, 2026</p>
+  </div>
+
+</body>
+
+</html>

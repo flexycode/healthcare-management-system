@@ -4,7 +4,20 @@ const jwt = require('jsonwebtoken');
 
 exports.register = async (req, res) => {
     try {
+        // Admin token gate — only authorized personnel can register users
+        const adminToken = req.header('x-admin-token');
+        if (!adminToken || adminToken !== process.env.ADMIN_REGISTER_TOKEN) {
+            return res.status(403).json({ message: 'Registration requires a valid admin token' });
+        }
+
         const { username, password, role, name } = req.body;
+
+        // Check for duplicate username
+        const existingUser = await User.findOne({ username });
+        if (existingUser) {
+            return res.status(409).json({ message: 'Username already exists' });
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({ username, password: hashedPassword, role, name });
         await newUser.save();
